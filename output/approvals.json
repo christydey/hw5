@@ -1,0 +1,238 @@
+{
+  "note": "Human-approval queue. Workflow state only.",
+  "approvals": [
+    {
+      "id": "a1b54d31ac",
+      "run_id": "e96c312906ae",
+      "ticket_id": 101,
+      "created_at": "2026-10-05T01:04:41+00:00",
+      "prepared_by": "accounting",
+      "kind": "invoice",
+      "ref_id": 501,
+      "sku": null,
+      "qty": null,
+      "vendor_id": null,
+      "account": "checking",
+      "reason": "Pay the overdue invoice blocking the requested tee restock; eligible for human approval.",
+      "amount": 840.0,
+      "expected_next_due": null,
+      "status": "executed",
+      "refusal_reasons": [],
+      "decided_by": "Christy (dashboard test)",
+      "decided_at": "2026-10-05T01:04:47+00:00",
+      "note": null,
+      "last_error": null,
+      "execution": {
+        "payment": {
+          "id": 1,
+          "kind": "invoice",
+          "ref_id": 501,
+          "amount": 840.0,
+          "account": "checking",
+          "paid_at": "2026-08-31",
+          "approved_by": "Christy (dashboard test)"
+        },
+        "balance_before": 3400.0,
+        "balance_after": 2560.0,
+        "tables_updated": [
+          "payments",
+          "cash_accounts",
+          "invoices[501].status=paid"
+        ]
+      }
+    },
+    {
+      "id": "b17788e2e6",
+      "run_id": "e96c312906ae",
+      "ticket_id": 101,
+      "created_at": "2026-10-05T01:04:41+00:00",
+      "prepared_by": "accounting",
+      "kind": "purchase_order",
+      "ref_id": null,
+      "sku": "CC-TEE-WHITE",
+      "qty": 1,
+      "vendor_id": 1,
+      "account": "checking",
+      "reason": "Restock the one-unit shortfall; currently blocked by open invoice 501 and should be rechecked only after that invoice is paid.",
+      "amount": 8.0,
+      "expected_next_due": null,
+      "status": "refused",
+      "refusal_reasons": [
+        "Vendor 1 has open invoice(s) [501] and will not ship until they are paid."
+      ],
+      "decided_by": null,
+      "decided_at": null,
+      "note": null,
+      "last_error": null,
+      "execution": null
+    },
+    {
+      "id": "81db4e64f0",
+      "run_id": "4f16dfacd011",
+      "ticket_id": 101,
+      "created_at": "2026-10-05T01:22:20+00:00",
+      "prepared_by": "accounting",
+      "kind": "invoice",
+      "ref_id": 501,
+      "sku": null,
+      "qty": null,
+      "vendor_id": null,
+      "account": "checking",
+      "reason": "Pay overdue blocking invoice to unblock Bulldog Print Co; eligible for human approval and leaves funds for the next rent payment.",
+      "amount": 840.0,
+      "expected_next_due": null,
+      "status": "executed",
+      "refusal_reasons": [],
+      "decided_by": "christy",
+      "decided_at": "2026-10-05T01:27:53+00:00",
+      "note": null,
+      "last_error": null,
+      "execution": {
+        "payment": {
+          "id": 1,
+          "kind": "invoice",
+          "ref_id": 501,
+          "amount": 840.0,
+          "account": "checking",
+          "paid_at": "2026-08-31",
+          "approved_by": "christy"
+        },
+        "balance_before": 3400.0,
+        "balance_after": 2560.0,
+        "tables_updated": [
+          "payments",
+          "cash_accounts",
+          "invoices[501].status=paid"
+        ]
+      }
+    },
+    {
+      "id": "06cddd255b",
+      "run_id": "70669b1d5296",
+      "ticket_id": 101,
+      "created_at": "2026-10-05T01:31:30+00:00",
+      "prepared_by": "accounting",
+      "kind": "invoice",
+      "ref_id": 501,
+      "sku": null,
+      "qty": null,
+      "vendor_id": null,
+      "account": "checking",
+      "reason": "Pay the overdue invoice blocking the requested tee restock; eligible for human approval.",
+      "amount": 840.0,
+      "expected_next_due": null,
+      "status": "void",
+      "refusal_reasons": [],
+      "decided_by": null,
+      "decided_at": "2026-10-05T01:33:53+00:00",
+      "note": "Voided by database reset.",
+      "last_error": null,
+      "execution": null
+    },
+    {
+      "id": "26417136c2",
+      "run_id": "70669b1d5296",
+      "ticket_id": 101,
+      "created_at": "2026-10-05T01:31:30+00:00",
+      "prepared_by": "accounting",
+      "kind": "purchase_order",
+      "ref_id": null,
+      "sku": "CC-TEE-WHITE",
+      "qty": 1,
+      "vendor_id": 1,
+      "account": "checking",
+      "reason": "Restock the one-unit shortfall; currently blocked by open invoice 501 and should be rechecked only after that invoice is paid.",
+      "amount": 8.0,
+      "expected_next_due": null,
+      "status": "refused",
+      "refusal_reasons": [
+        "Vendor 1 has open invoice(s) [501] and will not ship until they are paid."
+      ],
+      "decided_by": null,
+      "decided_at": null,
+      "note": null,
+      "last_error": null,
+      "execution": null
+    },
+    {
+      "id": "4559f6e22b",
+      "run_id": "85124044c167",
+      "ticket_id": 101,
+      "created_at": "2026-10-05T01:35:39+00:00",
+      "prepared_by": "accounting",
+      "kind": "invoice",
+      "ref_id": 501,
+      "sku": null,
+      "qty": null,
+      "vendor_id": null,
+      "account": "checking",
+      "reason": "Overdue invoice blocking Bulldog Print Co shipment; checked as affordable, subject to human approval.",
+      "amount": 840.0,
+      "expected_next_due": null,
+      "status": "executed",
+      "refusal_reasons": [],
+      "decided_by": "christy",
+      "decided_at": "2026-10-05T01:45:12+00:00",
+      "note": null,
+      "last_error": null,
+      "execution": {
+        "payment": {
+          "id": 1,
+          "kind": "invoice",
+          "ref_id": 501,
+          "amount": 840.0,
+          "account": "checking",
+          "paid_at": "2026-08-31",
+          "approved_by": "christy"
+        },
+        "balance_before": 3400.0,
+        "balance_after": 2560.0,
+        "tables_updated": [
+          "payments",
+          "cash_accounts",
+          "invoices[501].status=paid"
+        ]
+      }
+    },
+    {
+      "id": "4fcb398c7d",
+      "run_id": "5e8b62537b56",
+      "ticket_id": 102,
+      "created_at": "2026-10-05T01:47:16+00:00",
+      "prepared_by": "accounting",
+      "kind": "lease_rent",
+      "ref_id": 1,
+      "sku": null,
+      "qty": null,
+      "vendor_id": null,
+      "account": "checking",
+      "reason": "Pay lease 1's rent due 2026-09-02; cash check passed, subject to human approval.",
+      "amount": 2400.0,
+      "expected_next_due": "2026-09-02",
+      "status": "executed",
+      "refusal_reasons": [],
+      "decided_by": "christy",
+      "decided_at": "2026-10-05T01:49:40+00:00",
+      "note": null,
+      "last_error": null,
+      "execution": {
+        "payment": {
+          "id": 2,
+          "kind": "lease_rent",
+          "ref_id": 1,
+          "amount": 2400.0,
+          "account": "checking",
+          "paid_at": "2026-08-31",
+          "approved_by": "christy"
+        },
+        "balance_before": 2560.0,
+        "balance_after": 160.0,
+        "tables_updated": [
+          "payments",
+          "cash_accounts",
+          "leases[1].next_due=2026-10-02"
+        ]
+      }
+    }
+  ]
+}

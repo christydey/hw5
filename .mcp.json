@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "campus-customs": {
+      "type": "stdio",
+      "command": "/Users/christy/AI-Foundation/.venv/bin/python",
+      "args": ["/Users/christy/AI-Foundation/homeworks/hwv5/mcp_server/server.py"]
+    }
+  }
+}

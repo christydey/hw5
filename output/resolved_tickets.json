@@ -1,0 +1,132 @@
+{
+  "generated_from": "Problem 9 real runs (output/problem9_evidence, output/audit_trail.json, data/campus_customs_new.db)",
+  "model": "gpt-6-luna via Portkey (fresh responses)",
+  "starting_checking_balance": 3400.0,
+  "ending_checking_balance": 160.0,
+  "ending_balance_source": "cash_accounts.checking in data/campus_customs_new.db",
+  "tickets": [
+    {
+      "id": 101,
+      "final_status": "resolved",
+      "run_id": "85124044c167",
+      "short_outcome": "Out of stock (size S, short 1); vendor blocked by overdue invoice 501. A human approved paying invoice 501 ($840) to unblock the 5-day reprint; customer update drafted for review.",
+      "first_agent_called_by_boss": "Inventory",
+      "delegations": [
+        "Boss -> Inventory",
+        "Boss -> Accounting",
+        "Inventory -> Accounting",
+        "Accounting -> Inventory",
+        "Boss -> Customer Service",
+        "Customer Service -> Inventory"
+      ],
+      "agent_contributions": {
+        "Boss": "Read the ticket (get_ticket), sent Inventory and Accounting their questions in one step, then asked Customer Service for a customer update. Final recommendation: seek human approval to pay invoice 501 while keeping the $2,400 rent in reserve, have a human review the customer draft, and do not promise an arrival date.",
+        "Inventory": "Found size S at 0 on hand (shortfall 1) and that Bulldog Print Co (vendor 1, 5 lead days) cannot ship while invoice 501 is open. Handed the payment question to Accounting itself, and answered follow-ups from Accounting and Customer Service (3 reports). One fact citing a misspelled tool name was bounced by the guardrail and corrected.",
+        "Accounting": "Checked cash and obligations ($3,400 in checking; rent due in 2 days), vendor 1's status, and ran check_payment on invoice 501: eligible, leaving $2,560, or $160 with the $2,400 rent reserved. Prepared the $840 payment proposal (amount filled from the DB by the guardrail). Also asked Inventory to confirm the shortfall.",
+        "Customer Service": "Drafted an update to Tauhid Zaman: size S is not available and the supplier can't ship yet, with no arrival date promised. After the guardrail rejected an unsourced fact, it asked Inventory to confirm the stock status before finishing. Draft only; nothing was sent."
+      },
+      "agents_not_called": [
+        "Facilities"
+      ],
+      "mcp_tools_used": {
+        "get_ticket": 6,
+        "get_cash_and_obligations": 2,
+        "get_vendor_ship_status": 3,
+        "get_backorder_and_vendor_block_status": 3,
+        "check_payment": 2
+      },
+      "human_approvals": [
+        {
+          "approval_id": "4559f6e22b",
+          "kind": "invoice",
+          "ref_id": 501,
+          "amount": 840.0,
+          "status": "executed",
+          "approved_by": "christy",
+          "approved_at": "2026-10-05T01:45:12+00:00",
+          "checking_before": 3400.0,
+          "checking_after": 2560.0,
+          "payment_id": 1
+        }
+      ],
+      "cash_effect": -840.0,
+      "cash_effect_reason": "Paid Bulldog Print Co invoice #501 (human-approved)."
+    },
+    {
+      "id": 102,
+      "final_status": "resolved",
+      "run_id": "5e8b62537b56",
+      "short_outcome": "Rent notice verified against lease 1 ($2,400 due 2026-09-02). A human approved the $2,400 rent payment; lease next_due moved to 2026-10-02.",
+      "first_agent_called_by_boss": "Facilities",
+      "delegations": [
+        "Boss -> Facilities",
+        "Facilities -> Accounting",
+        "Boss -> Accounting"
+      ],
+      "agent_contributions": {
+        "Boss": "Read the ticket, delegated to Facilities, then asked Accounting directly to confirm the payment could be proposed. Final recommendation: submit the $2,400 rent for human approval before 2026-09-02; nothing paid.",
+        "Accounting": "Checked cash and obligations (no open invoices remain after 101's payment) and ran check_payment on lease 1 rent: eligible, leaving $160. Prepared the $2,400 proposal. Asked twice (by Facilities, then by the Boss), with the same answer both times.",
+        "Facilities": "Used get_rent_due_and_cash_position: the notice matches lease 1 ($2,400, due 2026-09-02, 2 days after the shop date 2026-08-31), and checking would go from $2,560 to $160. Handed the payment to Accounting. Its first answer tried to include a payment proposal itself; the guardrail bounced it (\"Only Accounting prepares payment proposals\")."
+      },
+      "agents_not_called": [
+        "Inventory",
+        "Customer Service"
+      ],
+      "mcp_tools_used": {
+        "get_ticket": 4,
+        "get_rent_due_and_cash_position": 1,
+        "get_cash_and_obligations": 2,
+        "check_payment": 2
+      },
+      "human_approvals": [
+        {
+          "approval_id": "4fcb398c7d",
+          "kind": "lease_rent",
+          "ref_id": 1,
+          "amount": 2400.0,
+          "status": "executed",
+          "approved_by": "christy",
+          "approved_at": "2026-10-05T01:49:40+00:00",
+          "checking_before": 2560.0,
+          "checking_after": 160.0,
+          "payment_id": 2
+        }
+      ],
+      "cash_effect": -2400.0,
+      "cash_effect_reason": "Paid lease #1 rent due 2026-09-02 (human-approved)."
+    },
+    {
+      "id": 103,
+      "final_status": "resolved",
+      "run_id": "883a2c0cd609",
+      "short_outcome": "8 of 20 size-M hoodies in stock (short 12). Recommended a manager-approved bulk discount above the $22 cost and confirming sourcing for the remaining 12; no purchase proposed, no cash change.",
+      "first_agent_called_by_boss": "Inventory",
+      "delegations": [
+        "Boss -> Inventory",
+        "Boss -> Accounting",
+        "Boss -> Customer Service",
+        "Customer Service -> Inventory",
+        "Customer Service -> Accounting"
+      ],
+      "agent_contributions": {
+        "Boss": "Read the ticket, sent Inventory and Accounting their questions in one step, then asked Customer Service for a reply draft. Final recommendation: have a manager consider a 15% discount ($49.30 each, above the $22 unit cost), confirm sourcing for the other 12 before promising all 20, and reconcile the draft's 10% price before sending anything.",
+        "Inventory": "Used get_bulk_order_stock_and_pricing: 8 of 20 size M on hand, shortfall 12 (S 4 \u00b7 L 14 \u00b7 XL 6 are not substitutes unless accepted). Used list_vendors to pick Bulldog Print Co as an inferred restock source (apparel reprint). get_vendor_ship_status now shows it can ship, because invoice 501 was paid on ticket 101: 5-day lead time, earliest arrival 2026-09-05. No order was placed. Asked twice (by the Boss and by Customer Service).",
+        "Accounting": "Used get_bulk_order_stock_and_pricing ($58 list, $22 unit cost) and get_cash_and_obligations (checking $160). Any discount must stay under $36 per unit. To the Boss it suggested 15% ($49.30 each); to Customer Service, later, 10% ($52.20 each). It proposed no purchase or payment.",
+        "Customer Service": "After a guardrail bounce for an unsourced fact, it asked Inventory and Accounting to confirm the facts, then drafted a reply to Yale AI Club: 8 available now, 12 unconfirmed, and a proposed 10% discount ($52.20) subject to staff approval. Draft only; nothing was sent."
+      },
+      "agents_not_called": [
+        "Facilities"
+      ],
+      "mcp_tools_used": {
+        "get_ticket": 4,
+        "get_bulk_order_stock_and_pricing": 4,
+        "get_cash_and_obligations": 1,
+        "list_vendors": 2,
+        "get_vendor_ship_status": 2
+      },
+      "human_approvals": [],
+      "cash_effect": 0.0,
+      "cash_effect_reason": "No payment or purchase."
+    }
+  ]
+}

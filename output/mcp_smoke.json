@@ -1,0 +1,28 @@
+{
+  "server": "campus-customs",
+  "database": "data/campus_customs_new.db",
+  "called_via": "Claude Code MCP connection (stdio, .mcp.json)",
+  "tests": [
+    {
+      "prompt": "For ticket 101, call get_backorder_and_vendor_block_status through the campus-customs MCP server.",
+      "tool_name": "mcp__campus-customs__get_backorder_and_vendor_block_status",
+      "tool_input": {"ticket_id": 101},
+      "tool_output": {"date_today":"2026-08-31","ticket":{"id":101,"type":"customer_order","requester":"Tauhid Zaman","subject":"Bulldog tee","sku":"CC-TEE-WHITE","size":"S","qty":1,"lease_id":null,"invoice_id":501,"status":"open","notes":"Needs a tee in size S.","created_at":"2026-08-31T09:15:00-04:00"},"stock":{"sku":"CC-TEE-WHITE","name":"Classic Bulldog Tee","size":"S","qty":0,"location":"Aisle B"},"linked_invoice":{"id":501,"vendor_id":1,"amount":840,"due_date":"2026-08-28","status":"open","description":"Rush reprint CC-TEE-WHITE S"},"vendor":{"id":1,"name":"Bulldog Print Co","specialty":"apparel reprint","lead_days":5},"vendor_open_invoices":[{"id":501,"vendor_id":1,"amount":840,"due_date":"2026-08-28","status":"open","description":"Rush reprint CC-TEE-WHITE S"}],"derived":{"shortfall":1,"linked_invoice_days_overdue":3,"vendor_open_invoice_total":840,"vendor_can_ship":false}},
+      "matches_db": true
+    },
+    {
+      "prompt": "For ticket 102, call get_rent_due_and_cash_position through the campus-customs MCP server.",
+      "tool_name": "mcp__campus-customs__get_rent_due_and_cash_position",
+      "tool_input": {"ticket_id": 102},
+      "tool_output": {"date_today":"2026-08-31","ticket":{"id":102,"type":"rent_notice","requester":"Elm City Properties","subject":"Rent due","sku":null,"size":null,"qty":null,"lease_id":1,"invoice_id":null,"status":"open","notes":"Email: shop rent due in 2 days.","created_at":"2026-08-31T11:05:00-04:00"},"lease":{"id":1,"space_name":"Chapel Street shop","landlord":"Elm City Properties","monthly_rent":2400,"next_due":"2026-09-02","notes":null},"cash_accounts":[{"name":"checking","balance":3400,"date":"2026-08-31"}],"derived":{"days_until_due":2,"balance_after_rent":{"checking":1000}}},
+      "matches_db": true
+    },
+    {
+      "prompt": "For ticket 103, call get_bulk_order_stock_and_pricing through the campus-customs MCP server.",
+      "tool_name": "mcp__campus-customs__get_bulk_order_stock_and_pricing",
+      "tool_input": {"ticket_id": 103},
+      "tool_output": {"ticket":{"id":103,"type":"price_override","requester":"Yale AI Club","subject":"Bulk hoodie discount","sku":"CC-HOOD-NAVY","size":"M","qty":20,"lease_id":null,"invoice_id":null,"status":"open","notes":"Student org wants 20 hoodies, size M, asking for a bulk discount.","created_at":"2026-08-31T16:55:00-04:00"},"stock_by_size":[{"size":"S","qty":4,"location":"Aisle A"},{"size":"M","qty":8,"location":"Aisle A"},{"size":"L","qty":14,"location":"Aisle A"},{"size":"XL","qty":6,"location":"Aisle A"}],"pricing":{"sku":"CC-HOOD-NAVY","unit_cost":22,"list_price":58},"derived":{"requested_size_on_hand":8,"shortfall":12,"list_total":1160,"cost_total":440,"max_discount_per_unit_before_loss":36}},
+      "matches_db": true
+    }
+  ]
+}

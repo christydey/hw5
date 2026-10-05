@@ -1,0 +1,40 @@
+# ---- Secrets -----------------------------------------------------------------
+# The real environment file must never be committed. .env.example IS tracked.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---- Python ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# ---- Frontend ----------------------------------------------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# ---- Local runtime files ------------------------------------------------------
+# Lock files and temp files written next to the audit trail / approval queue.
+output/.*.lock
+output/.audit_trail_*.json
+output/.approvals_*.json
+data/*.db-journal
+data/.*.resetting
+
+# ---- OS / editor ---------------------------------------------------------------
+.DS_Store
+.vscode/
+.idea/
+
+# NOTE: data/campus_customs.db and data/campus_customs_new.db are intentionally
+# committed (the original and the working copy). Do not add *.db here.
+
+# TypeScript incremental build cache
+frontend/*.tsbuildinfo

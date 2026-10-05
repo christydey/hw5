@@ -1,0 +1,8 @@
+# Campus Customs (hw5) — Python dependencies for the MCP server and the FastAPI backend.
+# Versions are the ones this project was built and tested with (Python 3.14).
+pydantic-ai-slim[openai]==2.43.0
+openai==3.14.1
+fastmcp==4.0.11
+fastapi==0.141.1
+uvicorn==0.54.0
+python-dotenv==1.2.3
